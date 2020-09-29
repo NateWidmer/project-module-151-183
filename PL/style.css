@@ -104,6 +104,12 @@ tr:nth-child(even) {
 }
 
 /*START CREATE QUIZ FORM*/
+
+.quiz-form {
+  width: 50%;
+  text-align: left;
+}
+
 input[type=text], select {
   width: 100%;
   padding: 12px 20px;
@@ -130,9 +136,11 @@ input[type=submit]:hover {
   background-color: #111;
 }
 
-.quiz-form {
+.quiz-form-container {
+  text-align: -webkit-center;
   border-radius: 5px;
   padding: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 /*END CREATE QUIZ FORM*/

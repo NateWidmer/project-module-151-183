@@ -14,8 +14,8 @@
 
     <div class="login-container">
         <form class="login-form" method="post">
-            <h2>Login</h2>
-            <p>Please fill in your credentials to login.</p>
+            <h2>Register</h2>
+            <p>Please fill out this form to create an account.</p>
             <br>
             <div class="form-group">
                 <label>Username</label>
@@ -27,10 +27,16 @@
                 <input type="password" name="password" class="form-control">
                 <span class="help-block"></span>
             </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" name="confirm-password" class="form-control">
+                <span class="help-block"></span>
+            </div>
             <div class="button-group">
                 <input type="submit" class="btn btn-primary" value="Login">
+                <input type="reset" class="btn btn-primary" value="Reset">
             </div>
-            <p>Don't have an account? <a href="register.html">Sign up now</a>.</p>
+            <p>Already have an account? <a href="login.html">Login</a>.</p>
         </form>
     </div>
 </body>

@@ -7,6 +7,7 @@
 /*START BODY*/
 body {
   background-color: #e8e8e8;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 /*END BODY*/
 
@@ -20,7 +21,6 @@ ul {
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 li {
@@ -57,7 +57,6 @@ li a:hover {
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .button1 {
@@ -72,7 +71,6 @@ li a:hover {
 
 /*START HIGHSCORETABLE*/
 table {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   border-collapse: collapse;
   margin-left: auto;
   margin-right: auto;
@@ -94,13 +92,11 @@ tr:nth-child(even) {
 /*START HIGHSCORETITLE*/
 .highscore-title {
   text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 /*END HIGHSCORETITLE*/
 
 .create-quiz-title {
   text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 /*START CREATE QUIZ FORM*/
@@ -133,6 +129,42 @@ input[type=submit]:hover {
 .quiz-form {
   border-radius: 5px;
   padding: 20px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 /*END CREATE QUIZ FORM*/
+
+/* START LOGIN CONTAINER */
+
+.login-container {
+  justify-content: center;
+  display: flex;
+}
+
+.login-form {
+  margin-top: 50px;
+  width: fit-content;
+  background-color: #333;
+  padding: 25px 50px;
+  color: #ccc;
+  box-shadow: 5px 5px 5px 3px #33333340;
+}
+
+
+input[type=password], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+a {
+  color: #e8f7ee;
+}
+
+a:hover {
+  color: #b8c4bb;
+}
+
+/* END LOGIN CONTAINER */

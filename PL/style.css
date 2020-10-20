@@ -50,6 +50,7 @@ li a:hover {
   border: none;
   color: #663F46;
   padding: 12px 20px;
+  margin: 8px 0;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -147,10 +148,13 @@ input[type=submit]:hover {
 }
 
 .quiz-form-container {
-  text-align: -webkit-center;
+  
   border-radius: 5px;
   padding: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
 
 }
 /*END CREATE QUIZ FORM*/
@@ -176,6 +180,7 @@ input[type=submit]:hover {
 
 .container {
   text-align: center;
+  color: white;
 }
 
 .card-title {

@@ -21,16 +21,56 @@
    <h3>Create a new Quiz</h3>
   </div>
 
+  <!--Plus from start-->
    <div class="quiz-form-container">
-    <form class="quiz-form" action="/action_page.php">
-      <label for="fname">Question</label>
-      <input type="text" id="question" name="question" placeholder="Your question..">
+    <!--<form class="quiz-form" id="quiz-form"> -->
+      
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   
-      <label for="lname">Answer</label>
-      <input type="text" id="answer" name="question" placeholder="Your answer..">
+      <div id="new_chq"></div>
+      <input type="hidden" value="1" id="total_chq">
+      <br/>
+      <button onclick="add()" class="button button1">Add</button>
+      <button onclick="remove()" class="button button1">remove</button>
     
+      <script>
+        function add(){
+          var new_chq_no = parseInt($('#total_chq').val())+1;
+          var new_input_question="<input type='text' id='new_"+new_chq_no+"' name='question' placeholder='Your question..' >";
+          var new_input_answer="<input type='text' id='new_"+new_chq_no+"' name='question' placeholder='Your answer..'>";
+          var question_title = "<label id='question_tit"+new_chq_no+"'>Question</label>";
+          var answer_title = "<label id='answer_tit"+new_chq_no+"'>Answer</label>";
+          $('#new_chq').append(question_title);
+          $('#total_chq').val(new_chq_no);
+          $('#new_chq').append(new_input_question);
+          $('#total_chq').val(new_chq_no);
+          $('#new_chq').append(answer_title);
+          $('#total_chq').val(new_chq_no);
+          $('#new_chq').append(new_input_answer);
+          $('#total_chq').val(new_chq_no);
+        }
+        function remove(){
+          var last_chq_no = $('#total_chq').val();
+          if(last_chq_no>1){
+            ;
+            $('#question_tit'+last_chq_no).remove();
+            $('#total_chq').val(last_chq_no-1);
+            $('#new_'+last_chq_no).remove();
+            $('#total_chq').val(last_chq_no-1);
+            $('#answer_tit'+last_chq_no).remove();
+            $('#total_chq').val(last_chq_no-1);
+            $('#new_'+last_chq_no).remove();
+            $('#total_chq').val(last_chq_no-1);
+           
+          }
+        }
+        </script>
+
       <input type="submit" value="Create Quiz">
-    </form>
   </div>
+
+  <!--Plus from end-->
+
+
 </body>
 </html>

@@ -19,10 +19,29 @@ function register_user($dbconn, $username, $password, $password2)
         $error = true;
     }
 
-    if (!$error) {
-        $query = "INSERT INTO users(username, password) VALUES('".$username."', '".$password."')";
-        $dbconn->query($query);
+    if(!$error) {
+        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+
+        if($stmt = mysqli_prepare($dbconn, $sql)) {
+            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+
+            $param_username = $username;
+            $param_password = password_hash($password, PASSWORD_DEFAULT);
+
+            if(mysqli_stmt_execute($stmt)) {
+                header("location: login.html");
+            } else {
+                echo '<p>Something went wrong when trying to hash password</p>';
+                $error = true;
+            }
+
+            mysqli_stmt_close($stmt);
+
+        }
     }
+
+
+
 
     return $error;
 

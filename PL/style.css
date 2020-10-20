@@ -7,6 +7,7 @@
 /*START BODY*/
 body {
   background-color: #e8e8e8;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 /*END BODY*/
 
@@ -20,7 +21,10 @@ ul {
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.logout, li.logout {
+  float: right !important;
 }
 
 li {
@@ -43,6 +47,7 @@ li a:hover {
   background-color: #663F46;
   transition-duration: 0.4s;
 }
+
 /*END NAVBAR*/
 
 /*START BUTTON*/
@@ -58,8 +63,6 @@ li a:hover {
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin-bottom: 10px;
 }
 
 .button1 {
@@ -74,7 +77,6 @@ li a:hover {
 
 /*START HIGHSCORETABLE*/
 table {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   border-collapse: collapse;
   margin-left: auto;
   margin-right: auto;
@@ -96,14 +98,12 @@ tr:nth-child(even) {
 /*START HIGHSCORETITLE*/
 .highscore-title {
   text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 /*END HIGHSCORETITLE*/
 
 /*START CREATE QUIZ TITLE*/
 .create-quiz-title {
   text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 /*END CREATE QUIZ TITLE*/
 
@@ -134,7 +134,7 @@ input[type=text], select {
 input[type=submit] {
   width: 100%;
   background-color: #663F46;
-  color: white;
+  color: #ccc;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
@@ -200,3 +200,62 @@ input[type=submit]:hover {
   font-size: 14px;
 }
 /*START CARD*/
+
+/* START LOGIN CONTAINER */
+
+.login-container {
+  justify-content: center;
+  display: flex;
+}
+
+.login-form {
+  margin-top: 50px;
+  width: fit-content;
+  background-color: #333;
+  padding: 25px 50px;
+  color: #ccc;
+  box-shadow: 5px 5px 5px 3px #33333340;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+
+input[type=password], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=reset] {
+  width: 100%;
+  background-color: #ccc;
+  color: #111;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+input[type=reset]:hover {
+  background-color: #111;
+  color: #ccc;
+}
+
+a {
+  color: #e8f7ee;
+}
+
+a:hover {
+  color: #b8c4bb;
+}
+
+/* END LOGIN CONTAINER */

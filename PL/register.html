@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript">
+        $(function () {
+
+            $('#register_form').on('submit', function (e) {
+
+                e.preventDefault();
+
+                $.ajax({
+                    type: 'post',
+                    url: '../BL/register2.php',
+                    data: $('#register_form').serialize(),
+                    success: function (response) {
+                        if (response) {
+                            document.getElementById('error').innerHTML = data;
+                        } 
+                    }
+                });
+
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+
+    <!--START HEADER -->
+    <div class="header">
+        <img src="images/quizialist.PNG" alt="Quizialist Logo">
+    </div>
+    <!--END HEADER -->
+
+    <div class="login-container">
+        <form class="login-form" id="register_form">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" size="40" maxlength="250" name="username"><br><br>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" size="40" maxlength="250" name="password"><br>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" size="40" maxlength="250" name="password2"><br>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Register">
+            </div>
+            <p>Already have an account? <a href="login.php">Log in</a>.</p>
+            <p style="color: #ff6a6a; margin: 0;" id="error"></p>
+        </form>
+    </div>
+
+
+</body>
+
+</html>

@@ -5,17 +5,17 @@ function register_user($dbconn, $username, $password, $password2)
     $error = false;
 
     if (strlen($password) == 0) {
-        echo '<p>Bitte ein Passwort angeben</p><br>';
+        echo '<p>Please enter a password</p>';
         $error = true;
     }
     
     if ($password != $password2) {
-        echo '<p>Die Passwörter müssen übereinstimmen</p><br>';
+        echo '<p>The passwords are not matching</p>';
         $error = true;
     }
 
     if(check_username($dbconn, $username)) {
-        echo '<p>A user with this username already exists</p><br>';
+        echo '<p>A user with this username already exists</p>';
         $error = true;
     }
 

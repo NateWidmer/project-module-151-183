@@ -13,11 +13,12 @@
 
                 $.ajax({
                     type: 'post',
-                    url: '../BL/register2.php',
+                    url: '../BL/register.php',
                     data: $('#register_form').serialize(),
                     success: function (response) {
                         if (response) {
-                            document.getElementById('error').innerHTML = data;
+                            console.log(response);
+                            document.getElementById('error').innerHTML = response;
                         } 
                     }
                 });

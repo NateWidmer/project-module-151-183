@@ -159,6 +159,19 @@ input[type=submit]:hover {
 }
 /*END CREATE QUIZ FORM*/
 
+/*START PLAY QUIZ*/
+
+.play-quiz-container {
+  
+  border-radius: 5px;
+  padding: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+/*END PLAY QUIZ*/
+
 /*START CARD*/
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);

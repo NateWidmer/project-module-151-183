@@ -37,7 +37,7 @@
         function add(){
           var new_chq_no = parseInt($('#total_chq').val())+1;
           var new_input_question="<input type='text' id='new_"+new_chq_no+"' name='question' placeholder='Your question..' >";
-          var new_input_answer="<input type='text' id='new_"+new_chq_no+"' name='question' placeholder='Your answer..'>";
+          var new_input_answer="<input type='text' id='new_"+new_chq_no+"' name='answer' placeholder='Your answer..'>";
           var question_title = "<label id='question_tit"+new_chq_no+"'>Question</label>";
           var answer_title = "<label id='answer_tit"+new_chq_no+"'>Answer</label>";
           $('#new_chq').append(question_title);

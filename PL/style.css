@@ -23,6 +23,10 @@ ul {
   top: 0;
 }
 
+.logout, li.logout {
+  float: right !important;
+}
+
 li {
   float: left;
 }
@@ -43,6 +47,7 @@ li a:hover {
   background-color: #663F46;
   transition-duration: 0.4s;
 }
+
 /*END NAVBAR*/
 
 /*START BUTTON*/
@@ -190,3 +195,4 @@ a:hover {
 }
 
 /* END LOGIN CONTAINER */
+

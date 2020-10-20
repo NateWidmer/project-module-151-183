@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<link rel = "stylesheet"
-   type = "text/css"
-   href = "style.css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
+
 <body>
-   <!--START HEADER -->
-   <div class="header">
+  <!--START HEADER -->
+  <div class="header">
     <img src="images/quizialist.PNG" alt="Quizialist Logo">
-    </div>
-   <!--END HEADER -->
-   <!--START NAVBAR -->
-    <ul>
-      <li><a class="active" href="playQuiz.html">Play Quiz</a></li>
-      <li><a href="createQuiz.html">Create Quiz</a></li>
-    </ul>
-   <!--END NAVBAR -->
+  </div>
+  <!--END HEADER -->
+  <!--START NAVBAR -->
+  <ul>
+    <li><a class="active" href="playQuiz.html">Play Quiz</a></li>
+    <li><a href="createQuiz.html">Create Quiz</a></li>
+    <li class="logout"><a href="../BL/logout.php">Logout</a></li>
+  </ul>
+  <!--END NAVBAR -->
   <div class="create-quiz-title">
-   <h3>Create a new Quiz</h3>
+    <h3>Create a new Quiz</h3>
   </div>
 
-   <div class="quiz-form">
+  <div class="quiz-form">
     <form action="/action_page.php">
       <label for="fname">Question</label>
       <input type="text" id="question" name="question" placeholder="Your question..">
-  
+
       <label for="lname">Answer</label>
       <input type="text" id="answer" name="question" placeholder="Your answer..">
-    
+
       <input type="submit" value="Create Quiz">
     </form>
   </div>
 </body>
+
 </html>

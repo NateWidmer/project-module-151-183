@@ -98,9 +98,12 @@ tr:nth-child(even) {
 /*END HIGHSCORETABLE*/
 
 /*START HIGHSCORETITLE*/
-.highscore-title {
+
+.score-page {
   text-align: center;
+  margin-top: 50px;
 }
+
 /*END HIGHSCORETITLE*/
 
 /*START CREATE QUIZ TITLE*/
@@ -163,8 +166,7 @@ input[type=submit]:hover {
 
 /*START PLAY QUIZ*/
 
-.play-quiz-container {
-  
+#play-quiz-container {
   border-radius: 5px;
   padding: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;

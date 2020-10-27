@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+    header("location: selectQuiz.php");
+    exit;
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -21,13 +32,12 @@
                             password: password
                         },
                         success: function(response) {
-                            var msg = "";
+                            console.log(response);
                             if (response == 1) {
-                                window.location.href = "selectQuiz.html";
+                                window.location.href = "selectQuiz.php";
                             } else {
-                                msg = "Invalid username or password!";
+                                document.getElementById("error").innerHTML = response;
                             }
-                            $("#error").html(msg);
                         }
                     });
                 }

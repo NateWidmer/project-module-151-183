@@ -28,40 +28,40 @@
       
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   
-      <div id="new_chq"></div>
-      <input type="hidden" value="1" id="total_chq">
+      <div id="new_inputfield"></div>
+      <input type="hidden" value="1" id="total_inputfields">
       <br/>
       <button onclick="add()" class="button button1">Add</button>
-      <button onclick="remove()" class="button button1">remove</button>
+      <button onclick="remove()" class="button button1">Remove</button>
     
       <script>
         function add(){
-          var new_chq_no = parseInt($('#total_chq').val())+1;
-          var new_input_question="<input type='text' id='new_"+new_chq_no+"' name='question' placeholder='Your question..' >";
-          var new_input_answer="<input type='text' id='new_"+new_chq_no+"' name='answer' placeholder='Your answer..'>";
-          var question_title = "<label id='question_tit"+new_chq_no+"'>Question</label>";
-          var answer_title = "<label id='answer_tit"+new_chq_no+"'>Answer</label>";
-          $('#new_chq').append(question_title);
-          $('#total_chq').val(new_chq_no);
-          $('#new_chq').append(new_input_question);
-          $('#total_chq').val(new_chq_no);
-          $('#new_chq').append(answer_title);
-          $('#total_chq').val(new_chq_no);
-          $('#new_chq').append(new_input_answer);
-          $('#total_chq').val(new_chq_no);
+          var new_inputfield_no = parseInt($('#total_inputfields').val())+1;
+          var new_input_question="<input type='text' id='new_"+new_inputfield_no+"' name='question' placeholder='Your question..' >";
+          var new_input_answer="<input type='text' id='new_"+new_inputfield_no+"' name='answer' placeholder='Your answer..'>";
+          var question_title = "<label id='question_tit"+new_inputfield_no+"'>Question</label>";
+          var answer_title = "<label id='answer_tit"+new_inputfield_no+"'>Answer</label>";
+          $('#new_inputfield').append(question_title);
+          $('#total_inputfields').val(new_inputfield_no);
+          $('#new_inputfield').append(new_input_question);
+          $('#total_inputfields').val(new_inputfield_no);
+          $('#new_inputfield').append(answer_title);
+          $('#total_inputfields').val(new_inputfield_no);
+          $('#new_inputfield').append(new_input_answer);
+          $('#total_inputfields').val(new_inputfield_no);
         }
         function remove(){
-          var last_chq_no = $('#total_chq').val();
-          if(last_chq_no>1){
+          var last_inputfield_no = $('#total_inputfields').val();
+          if(last_inputfield_no>1){
             ;
-            $('#question_tit'+last_chq_no).remove();
-            $('#total_chq').val(last_chq_no-1);
-            $('#new_'+last_chq_no).remove();
-            $('#total_chq').val(last_chq_no-1);
-            $('#answer_tit'+last_chq_no).remove();
-            $('#total_chq').val(last_chq_no-1);
-            $('#new_'+last_chq_no).remove();
-            $('#total_chq').val(last_chq_no-1);
+            $('#question_tit'+last_inputfield_no).remove();
+            $('#total_inputfields').val(last_inputfield_no-1);
+            $('#new_'+last_inputfield_no).remove();
+            $('#total_inputfields').val(last_inputfield_no-1);
+            $('#answer_tit'+last_inputfield_no).remove();
+            $('#total_inputfields').val(last_inputfield_no-1);
+            $('#new_'+last_inputfield_no).remove();
+            $('#total_inputfields').val(last_inputfield_no-1);
            
           }
         }

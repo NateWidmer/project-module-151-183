@@ -161,8 +161,7 @@ input[type=submit]:hover {
 
 /*START PLAY QUIZ*/
 
-.play-quiz-container {
-  
+#play-quiz-container {
   border-radius: 5px;
   padding: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;

@@ -81,7 +81,7 @@ function login_user($dbconn, $uname, $pass)
 
                             echo 1;
                         } else {
-                            echo $password, " ", $hashed_password;
+                            echo 'Your password is incorrect';
                         }
                     } else {
                         echo 'No user found with that username';
@@ -110,11 +110,73 @@ function get_quizzes($dbconn) {
         echo "<p>Creator: " . $row['username'] . "</p>";
         echo "</div>";
         echo "<div class='container'>";
-        echo "<a class='button button1' onclick=startQuiz(" . $row['quizid'] . ") href='playQuiz.php'>Start Quiz!</a>";
-        echo "<a class='button button1' onclick=viewHighscores(" . $row['quizid'] . ") href='quizHighscore.php'>Highscores</a>";
+        echo "<a class='button button1' href='playQuiz.php?id=" . $row['quizid'] ."'>Start Quiz!</a>";
+        echo "<a class='button button1' href='quizHighscore.php'>Highscores</a>";
         echo "</div>";
         echo "</div>";
     }
 }
+
+function get_quiz_by_id($dbconn, $id) {
+
+    $sql = "SELECT question FROM quiz q JOIN questions ON quiz_id=q.id WHERE q.id= '" . $id . "'";
+
+    $result = $dbconn->query($sql);
+
+    while($row = $result->fetch_assoc()) {
+        echo "<label id='question_for_quiz'>" . $row['question'] . "</label>";
+        echo "</br></br>";
+        echo "<input type='text' id='answer_for_question' name='answer' placeholder='Your answer...'>";
+        echo "</br></br>";
+    }
+
+    echo "<input id='submit' type='submit' value='Submit answers'>";
+}
+
+function post_answers($dbconn, $id, $answers) {
+    $score = 0;    
+
+    $sql = "SELECT answer FROM quiz q JOIN questions ON quiz_id=q.id WHERE q.id= '" . $id . "'";
+
+    $result = $dbconn->query($sql);
+
+    $index = 0;
+
+    while($row = $result->fetch_assoc()) {
+        if($row['answer'] === $answers[$index]) {
+            $score += 100;
+        } 
+        $index++;
+    }
+
+    insertScore($dbconn, $id, $score);
+}
+
+function insertScore($dbconn, $id, $score) {
+
+    session_start();
+
+    $userid = $_SESSION['id'];
+
+    $sql = "SELECT score FROM highscore_quiz hq JOIN highscore h ON h.id = hq.highscore_id WHERE hq.quiz_id = '".$id."' AND h.username_id = '".$userid."'";
+    $result = $dbconn->query($sql);
+
+    if(mysqli_num_rows($result)!=0) {
+		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if($score > $row['score']) {
+            $sql = "UPDATE highscore SET score = '".$score."' WHERE username_id = '".$userid."'";
+            $result = $dbconn->query($sql);
+        }
+    } else {
+        $sql = "INSERT INTO highscore(score, username_id) VALUES('".$score."', '".$userid."')";
+        $result = $dbconn->query($sql);
+        $last_id = $dbconn->insert_id;
+
+        $sql = "INSERT INTO highscore_quiz(highscore_id, quiz_id) VALUES('".$last_id."', '".$id."')";
+        $result = $dbconn->query($sql);
+    }
+    
+}
+
 
 ?>

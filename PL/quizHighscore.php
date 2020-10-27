@@ -24,7 +24,10 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false) {
         $("#highscore-container").html(data);
       })
 
-      document.getElementById("score").innerHTML = score;
+      if (score) {
+        document.getElementById("score-title").innerHTML = "You have achieved a Score of:"
+        document.getElementById("score").innerHTML = score;
+      }
     });
   </script>
 </head>
@@ -45,7 +48,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false) {
   <!--START TABLe -->
   <div class="score-page">
     <div id="your-score">
-      <h3>You have achieved a Score of:</h3>
+      <h3 id="score-title"></h3>
       <h1 id="score"></h1>
     </div>
     <h2>All Highscores</h1>

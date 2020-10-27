@@ -29,8 +29,8 @@ function register_user($dbconn, $username, $password, $password2)
             $param_password = password_hash($password, PASSWORD_DEFAULT);
 
             if(mysqli_stmt_execute($stmt)) {
-                header("location: login.html");
-            } else {
+                $error = false;
+                } else {
                 echo '<p>Something went wrong when trying to hash password</p>';
                 $error = true;
             }
@@ -39,11 +39,6 @@ function register_user($dbconn, $username, $password, $password2)
 
         }
     }
-
-
-
-
-    return $error;
 
 }
 
@@ -56,22 +51,48 @@ function check_username($dbconn, $username) {
     return $rows;
 }
 
-function login_user($dbconn, $username, $password)
+function login_user($dbconn, $uname, $pass)
 {
-    $uname = mysqli_real_escape_string($dbconn, $username);
-    $password = mysqli_real_escape_string($dbconn, $password);
+    $username = trim($uname);
+    $password = trim($pass);
 
-    if($uname != "" && $password != "") {
-        $query = "SELECT * FROM users WHERE username='".$uname."' AND password='".$password."'";
-        $result = $dbconn->query($query);
+    if($username != "" && $password != "") {
+        $sql = "SELECT id, username, password FROM users WHERE username = ?";
 
-        $rows = $result->num_rows;
+        if($stmt = mysqli_prepare($dbconn, $sql)) {
+            mysqli_stmt_bind_param($stmt, "s", $param_username);
 
-        if($rows > 0) {
-            $_SESSION['uname'] = $uname;
-            echo 1;
-        } else {
-            echo 0;
+            $param_username = $username;
+
+            if(mysqli_stmt_execute($stmt)) {
+                mysqli_stmt_store_result($stmt);
+
+                if(mysqli_stmt_num_rows($stmt) == 1) {
+                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
+
+                    if(mysqli_stmt_fetch($stmt)) {
+                        if(password_verify($password, $hashed_password)) {
+
+                            session_start();
+
+                            $_SESSION['uname'] = $username;
+                            $_SESSION['id'] = $id;
+                            $_SESSION['loggedin'] = true;
+
+                            echo 1;
+                        } else {
+                            echo $password, " ", $hashed_password;
+                        }
+                    } else {
+                        echo 'No user found with that username';
+                    }
+                } 
+            } else {
+                echo 'Something went wrong. Please try again later.';
+            }
+
+            mysqli_stmt_close($stmt);
+
         }
     }
 }

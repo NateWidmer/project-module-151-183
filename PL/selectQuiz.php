@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false) {
+    header("location: login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -13,8 +23,8 @@
   <!--END HEADER -->
   <!--START NAVBAR -->
   <ul>
-    <li><a class="active" href="selectQuiz.html">Play Quiz</a></li>
-    <li><a href="createQuiz.html">Create Quiz</a></li>
+    <li><a class="active" href="selectQuiz.php">Play Quiz</a></li>
+    <li><a href="createQuiz.php">Create Quiz</a></li>
     <li class="logout"><a href="../BL/logout.php">Logout</a></li>
   </ul>
   <!--END NAVBAR -->
@@ -30,8 +40,8 @@
         <p>Creator: </p>
       </div>
       <div class="container">
-        <a class="button button1" href="playQuiz.html">Start Quiz!</a>
-        <a class="button button1" href="quizHighscore.html">Highscores</a>
+        <a class="button button1" href="playQuiz.php">Start Quiz!</a>
+        <a class="button button1" href="quizHighscore.php">Highscores</a>
       </div>
     </div>
 

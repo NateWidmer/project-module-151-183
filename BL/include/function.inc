@@ -98,7 +98,7 @@ function login_user($dbconn, $uname, $pass)
 }
 
 function get_quizzes($dbconn) {
-    $sql = "SELECT q.id as quizid, title, username, count(question) as question FROM users u JOIN quiz q ON q.user_id=u.id JOIN questions ON quiz_id=q.id";
+    $sql = "SELECT q.id as quizid, title, username, count(question) as question FROM users u JOIN quiz q ON q.user_id=u.id JOIN questions ON quiz_id=q.id GROUP BY quizid";
 
     $result = $dbconn->query($sql);
 

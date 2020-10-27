@@ -207,4 +207,27 @@ function get_highscores_by_quiz_id($dbconn, $id) {
     echo "</table>";
 }
 
+function post_quiz($dbconn, $title, $questions, $answers) {
+    
+    session_start();
+
+    $userid = $_SESSION['id'];
+
+    $sql = "INSERT INTO quiz(title, user_id) VALUES ('".$title."', '".$userid."')";
+    $result = $dbconn->query($sql);
+    $last_id = $dbconn->insert_id;
+
+    $sql = "INSERT INTO questions(question, answer, quiz_id) VALUES ";
+
+    for($i = 0; $i < count($questions); $i++) {
+        if($i == 0) {
+            $sql.= "('".$questions[$i]."', '".$answers[$i]."', '".$last_id."')";
+        } else {
+            $sql.= ", ('".$questions[$i]."', '".$answers[$i]."', '".$last_id."') ";
+        }
+    };
+
+    $result = $dbconn->query($sql);
+}
+
 ?>

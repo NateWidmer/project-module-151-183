@@ -111,7 +111,7 @@ function get_quizzes($dbconn) {
         echo "</div>";
         echo "<div class='container'>";
         echo "<a class='button button1' href='playQuiz.php?id=" . $row['quizid'] ."'>Start Quiz!</a>";
-        echo "<a class='button button1' href='quizHighscore.php'>Highscores</a>";
+        echo "<a class='button button1' href='quizHighscore.php?id=" . $row['quizid'] ."'>Highscores</a>";
         echo "</div>";
         echo "</div>";
     }

@@ -2,9 +2,9 @@
 //process client request (via url)
   header("Content-Type:application/json");
   include("function.php");
-  $question = "In which city is the Empire State Building";
-  $answer = answerForQuestion($question);
-  //$answer="Hello World1";
+  $question = "Haupststadt von Kanton Zuerich?";
+  $quiz_id = "1";
+  $answer = answerForQuestion($question, $quiz_id);
   if(empty($answer))
  $data = NULL;
 else 

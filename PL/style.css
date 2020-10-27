@@ -96,9 +96,12 @@ tr:nth-child(even) {
 /*END HIGHSCORETABLE*/
 
 /*START HIGHSCORETITLE*/
-.highscore-title {
+
+.score-page {
   text-align: center;
+  margin-top: 50px;
 }
+
 /*END HIGHSCORETITLE*/
 
 /*START CREATE QUIZ TITLE*/

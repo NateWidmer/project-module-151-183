@@ -134,6 +134,7 @@ function get_quiz_by_id($dbconn, $id) {
 }
 
 function post_answers($dbconn, $id, $answers) {
+
     $score = 0;    
 
     $sql = "SELECT answer FROM quiz q JOIN questions ON quiz_id=q.id WHERE q.id= '" . $id . "'";
@@ -143,13 +144,15 @@ function post_answers($dbconn, $id, $answers) {
     $index = 0;
 
     while($row = $result->fetch_assoc()) {
-        if($row['answer'] === $answers[$index]) {
+        if(strtolower($row['answer']) === strtolower($answers[$index])) {
             $score += 100;
         } 
         $index++;
     }
 
     insertScore($dbconn, $id, $score);
+
+    echo $score;
 }
 
 function insertScore($dbconn, $id, $score) {
@@ -178,5 +181,30 @@ function insertScore($dbconn, $id, $score) {
     
 }
 
+function get_highscores_by_quiz_id($dbconn, $id) {
+    $sql = "SELECT title FROM quiz WHERE id = '" . $id . "'";
+    $result = $dbconn->query($sql);
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+    echo "<h3>" . $row['title'] . "</h3>";
+
+    $sql = " SELECT score, username FROM users u join highscore h on h.username_id = u.id join highscore_quiz hq on hq.highscore_id=h.id WHERE hq.quiz_id = '" . $id . "'";
+    $result = $dbconn->query($sql);
+
+    echo "<table>";
+    echo "<tr>";
+    echo "<th>Username</th>";
+    echo "<th>Score</th>";
+    echo "</tr>";
+
+    while($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . $row['username'] . "</td>";
+        echo "<td>" . $row['score'] . "</td>";
+        echo "</tr>";
+    }
+
+    echo "</table>";
+}
 
 ?>

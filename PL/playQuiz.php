@@ -16,7 +16,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false) {
   <link rel="stylesheet" type="text/css" href="style.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script language="javascript" type="text/javascript">
-    var url = window.location.pathname;
     let params = (new URL(document.location)).searchParams;
     let id = params.get('id');
 
@@ -43,7 +42,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false) {
             answers: formData
           },
           success: function(response) {
-            document.getElementById("error").innerHTML = response;
+            window.location.href = "quizHighscore.php?id=" + id + "&score=" + response;
           }
         });
 
@@ -73,8 +72,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false) {
 
     <form id="play-quiz-container">
     </form>
-
-    <p id="error"></p>
 
 </body>
 

@@ -4,7 +4,7 @@
 // http://localhost/TEST1/RESTfulPHPClientHelloWorld.php
 
 
-  $url ="http://localhost/TEST1/RESTfulPHPServiceHelloWorld.php";
+  $url ="http://localhost/location_service_final/RESTfulPHPServiceHelloWorld.php";
 // echo $url;
   $client = curl_init($url);
   curl_setopt($client,CURLOPT_RETURNTRANSFER,1);

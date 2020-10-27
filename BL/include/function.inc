@@ -97,4 +97,24 @@ function login_user($dbconn, $uname, $pass)
     }
 }
 
+function get_quizzes($dbconn) {
+    $sql = "SELECT q.id as quizid, title, username, count(question) as question FROM users u JOIN quiz q ON q.user_id=u.id JOIN questions ON quiz_id=q.id";
+
+    $result = $dbconn->query($sql);
+
+    while($row = $result->fetch_assoc()) {
+        echo "<div class='card'>";
+        echo "<h3>" . utf8_decode($row['title']) . "</h3>";
+        echo "<div class='card-title'>";
+        echo "<p>Number of questions: " . $row['question'] . "</p>";
+        echo "<p>Creator: " . $row['username'] . "</p>";
+        echo "</div>";
+        echo "<div class='container'>";
+        echo "<a class='button button1' onclick=startQuiz(" . $row['quizid'] . ") href='playQuiz.php'>Start Quiz!</a>";
+        echo "<a class='button button1' onclick=viewHighscores(" . $row['quizid'] . ") href='quizHighscore.php'>Highscores</a>";
+        echo "</div>";
+        echo "</div>";
+    }
+}
+
 ?>

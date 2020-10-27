@@ -3,8 +3,8 @@
 session_start();
 
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false) {
-    header("location: login.php");
-    exit;
+  header("location: login.php");
+  exit;
 }
 ?>
 
@@ -12,7 +12,16 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false) {
 <html>
 
 <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <link rel="stylesheet" type="text/css" href="style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script language="javascript" type="text/javascript">
+    $(document).ready(function() {
+      $.get("../BL/getQuizzes.php", function(data) {
+        $("#card-container").html(data);
+      })
+    });
+  </script>
 </head>
 
 <body>
@@ -30,19 +39,10 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false) {
   <!--END NAVBAR -->
   <!--START PLAY QUIZ TITLE -->
   <div class="play-quiz-title">
-    <h1>Quizes</h1>
+    <h1>Quizzes</h1>
     <!--END PLAY QUIZ TITLE -->
-    <!--START CARD -->
-    <div class="card">
-      <h3>Quiz Name</h3>
-      <div class="card-title">
-        <p>Number of questions: </p>
-        <p>Creator: </p>
-      </div>
-      <div class="container">
-        <a class="button button1" href="playQuiz.php">Start Quiz!</a>
-        <a class="button button1" href="quizHighscore.php">Highscores</a>
-      </div>
+    <div id="card-container">
+      <!--START CARD -->
     </div>
 
   </div>

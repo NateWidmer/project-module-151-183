@@ -52,7 +52,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false) {
           $('input[name="answer"]').each(function() {
             answers.push(this.value);
           })
-          
+
           $.ajax({
             type: 'post',
             url: '../BL/postQuiz.php',
@@ -62,7 +62,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false) {
               answers: answers,
             },
             success: function(response) {
-              document.getElementById("error").innerHTML = response;
+              alert("The Quiz has been created successfully.");
             }
           });
         });

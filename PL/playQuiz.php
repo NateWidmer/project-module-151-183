@@ -67,7 +67,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === false) {
   <!--END NAVBAR -->
   <!--START PLAY QUIZ TITLE -->
   <div class="play-quiz-title">
-    <h1>Quiz name</h1>
     <!--END PLAY QUIZ TITLE -->
 
     <form id="play-quiz-container">
